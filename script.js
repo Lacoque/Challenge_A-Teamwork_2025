@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000); 
     }
 
-    // 3. FUNCIÓN PARA DETENER
     function stopAutoSlide() {
         clearInterval(autoSlideInterval);
     }
@@ -86,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // MENÚ HAMBURGUESA MEJORADO
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Selección de elementos con validación
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
     
@@ -95,31 +93,28 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // 2. Función toggle mejorada
+
     const toggleMenu = function() {
         const isActive = nav.classList.contains('active');
         
-        // Alternar clases
+       
         menuToggle.classList.toggle('active', !isActive);
         nav.classList.toggle('active', !isActive);
         
-        // Bloquear scroll
+       
         document.body.style.overflow = isActive ? '' : 'hidden';
     };
 
-    // 3. Evento del botón hamburguesa
+   
     menuToggle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
         toggleMenu();
     });
 
-    // 4. Cerrar al hacer click fuera - VERSIÓN SEGURA
+    
     document.addEventListener('click', function(e) {
-        // Verificar:
-        // - Si el menú está abierto
-        // - Si el click NO fue en el botón
-        // - Si el click NO fue dentro del menú
+        // Verific
         if (nav.classList.contains('active') && 
             e.target !== menuToggle && 
             !menuToggle.contains(e.target) && 
@@ -128,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 5. Cerrar al seleccionar enlace (mobile)
+   
     document.querySelectorAll('nav a').forEach(function(link) {
         link.addEventListener('click', function() {
             if (window.innerWidth <= 768) {
@@ -136,4 +131,57 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+ // Configuración del carrusel vertical
+document.addEventListener("DOMContentLoaded", () => {
+   
+    if (window.innerWidth > 768) return; 
+    const carousel = document.querySelector(".slides");
+    const slides = document.querySelectorAll(".testimonial");
+    const dots = document.querySelectorAll(".dot");
+    
+    let currentIndex = 0;
+    const slideHeight = slides[0].offsetHeight + 30; 
+
+    function updateSlider(index) {
+       
+        carousel.style.transform = `translateY(calc(50% - ${index * slideHeight + slideHeight/2}px))`;
+        
+        // Actualizar clases active/prev/next
+        slides.forEach((slide, i) => {
+            slide.classList.remove("active", "prev-slide", "next-slide");
+            if (i === index) slide.classList.add("active");
+        });
+        
+        // Actualizar dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+        });
+    }
+
+    // Navegación con dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            currentIndex = index;
+            updateSlider(currentIndex);
+        });
+    });
+
+    // Auto-desplazamiento (opcional)
+    let autoSlide = setInterval(() => {
+        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+        updateSlider(currentIndex);
+    }, 3000);
+
+    // Pausar al interactuar
+    carousel.addEventListener("mouseenter", () => clearInterval(autoSlide));
+    carousel.addEventListener("mouseleave", () => {
+        autoSlide = setInterval(() => {
+            currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+            updateSlider(currentIndex);
+        }, 3000);
+    });
+
+    // Inicializar
+    updateSlider(0);
 });
