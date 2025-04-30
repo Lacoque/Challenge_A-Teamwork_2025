@@ -28,3 +28,5 @@ Interactive website built with HTML, CSS, and JavaScript, optimized for performa
 ├──styles.css           # Styles + media queries
 ├── script.js           # Modular logic
 └── assets/             # Compressed images
+
+Demo en vivo https://vrume.netlify.app/
