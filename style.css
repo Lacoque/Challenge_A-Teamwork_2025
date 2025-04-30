@@ -1382,11 +1382,10 @@ h3.step-title {
         overflow: hidden;
     }
 
-    /* .testimonials .testimonial.active {
-        opacity: 1 !important;
-        transform: scale(1) !important;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-    } */
+   .testimonials .testimonial.active {
+        opacity: 0 !important;
+       
+    } 
     .testimonials .testimonial.active::after {
         content: '';
         position: absolute;
