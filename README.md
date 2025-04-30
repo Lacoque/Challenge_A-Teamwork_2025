@@ -20,6 +20,8 @@ Interactive website built with HTML, CSS, and JavaScript, optimized for performa
 - **Performance**:
   - Optimized CSS selectors.
   - Modular JS to reduce load time.
+    Demo en vivo https://vrume.netlify.app/
+
 
 ## Project Structure 📂
 ```bash
@@ -29,4 +31,3 @@ Interactive website built with HTML, CSS, and JavaScript, optimized for performa
 ├── script.js           # Modular logic
 └── assets/             # Compressed images
 
-Demo en vivo https://vrume.netlify.app/
