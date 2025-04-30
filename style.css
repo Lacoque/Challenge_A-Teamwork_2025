@@ -1383,7 +1383,7 @@ h3.step-title {
     }
 
    .testimonials .testimonial.active {
-        opacity: 0 !important;
+        opacity: 20 !important;
        
     } 
     .testimonials .testimonial.active::after {
