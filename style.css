@@ -108,7 +108,7 @@ nav a.active::after {
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 1001;
+    z-index: 1101;
     order: 2;
 }
 
@@ -1451,7 +1451,7 @@ h3.step-title {
     }
 }
 
-/* ==================== AJUSTES PARA PANTALLAS MUY PEQUEÑAS (menos de 480px) ==================== */
+/* ==================== PANTALLAS480px ==================== */
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2.2rem;

@@ -147,19 +147,17 @@ document.addEventListener("DOMContentLoaded", () => {
        
         carousel.style.transform = `translateY(calc(50% - ${index * slideHeight + slideHeight/2}px))`;
         
-        // Actualizar clases active/prev/next
         slides.forEach((slide, i) => {
             slide.classList.remove("active", "prev-slide", "next-slide");
             if (i === index) slide.classList.add("active");
         });
         
-        // Actualizar dots
+    
         dots.forEach((dot, i) => {
             dot.classList.toggle("active", i === index);
         });
     }
 
-    // Navegación con dots
     dots.forEach((dot, index) => {
         dot.addEventListener("click", () => {
             currentIndex = index;
@@ -167,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Auto-desplazamiento (opcional)
     let autoSlide = setInterval(() => {
         currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
         updateSlider(currentIndex);
@@ -182,6 +179,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000);
     });
 
-    // Inicializar
     updateSlider(0);
 });
